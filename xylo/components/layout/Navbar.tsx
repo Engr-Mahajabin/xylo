@@ -3,14 +3,16 @@
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image"; 
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import ActionButton from "@/components/ui/ActionButton";
+import ContactModal from "../ui/ContactModal";
 
 const MobileMenu = dynamic(() => import("../home/MobileMenu"), { ssr: false });
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -26,7 +28,7 @@ export default function Navbar() {
         <div className="flex items-center cursor-pointer group">
           <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/xylo logo.svg" 
+              src="/xylo logo.svg"
               alt="Brand Logo"
               fill
               className="object-contain"
@@ -51,7 +53,10 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center space-x-4">
-          <ActionButton className="rounded-md px-5 py-2.5 text-[11px] uppercase tracking-widest font-bold border border-white/5 bg-zinc-950/80">
+          <ActionButton
+            onClick={() => setIsModalOpen(true)}
+            className="rounded-md px-5 py-2.5 text-[11px] uppercase tracking-widest font-bold border border-white/5 bg-zinc-950/80 cursor-pointer"
+          >
             <span>Start a project</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </ActionButton>
@@ -69,6 +74,11 @@ export default function Navbar() {
       {/* Mobile Dropdown Container */}
       <AnimatePresence>
         {isOpen && <MobileMenu navLinks={navLinks} setIsOpen={setIsOpen} />}
+      </AnimatePresence>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {isModalOpen && <ContactModal onClose={() => setIsModalOpen(false)} />}
       </AnimatePresence>
     </header>
   );

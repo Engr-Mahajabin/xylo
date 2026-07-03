@@ -43,15 +43,15 @@ const faqData = [
 ];
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // প্রথমটি ডিফল্ট ওপেন থাকবে যেমন ছবিতে আছে
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section className="bg-[#030303] text-white py-32 px-6 select-none overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* top subtitle */}
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-[1px] bg-[#E1B816]" />
-          <span className="text-[#E1B816]">[01]</span>
+          <span className="text-[#E1B816]">[06]</span>
           <span className="text-white/60 uppercase">Frequently Asked</span>
         </div>
 
