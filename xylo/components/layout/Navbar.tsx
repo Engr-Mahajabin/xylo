@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ActionButton from "@/components/ui/ActionButton";
@@ -15,7 +15,6 @@ export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Works", href: "#works" },
     { name: "Blogs", href: "#blogs" },

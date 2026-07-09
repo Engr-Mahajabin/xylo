@@ -58,7 +58,9 @@ export default function Faq() {
         {/* main title */}
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-sans">
           Answers{" "}
-          <span className="italic font-serif text-[#E1B816]">up front.</span>
+          <span className="font-blackops font-light text-[#E1B816]">
+            Up Front.
+          </span>
         </h2>
 
         {/* description snippet */}

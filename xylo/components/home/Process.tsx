@@ -22,7 +22,7 @@ export default function Process() {
           </span>{" "}
           to{" "}
           <span className="text-[#E1B816] font-blackops font-light">
-            Launch
+            Launch.
           </span>
         </h2>
 

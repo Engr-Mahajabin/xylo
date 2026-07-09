@@ -37,8 +37,8 @@ export default function Cta() {
             {/* Main Heading */}
             <h2 className="text-5xl md:text-6xl font-normal tracking-tight mb-8 leading-none">
               Let's{" "}
-              <span className="text-[#E1B816] font-blackops font-light italic">
-                talk.
+              <span className="text-[#E1B816] font-blackops font-light">
+                Talk.
               </span>
             </h2>
 
@@ -93,8 +93,8 @@ export default function Cta() {
             </span>
             <h3 className="text-2xl md:text-3xl font-normal mt-1">
               Send us a{" "}
-              <span className="text-[#E1B816] font-blackops font-light italic">
-                short briefing.
+              <span className="text-[#E1B816] font-blackops font-light">
+                Short Briefing.
               </span>
             </h3>
           </div>
@@ -110,7 +110,7 @@ export default function Cta() {
                   type="text"
                   required
                   placeholder="Anna"
-                  className="w-full bg-[#121212] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
+                  className="w-full bg-[#121212] border border-white/10 rounded-lg px-4 py-3 text-sm text-zinc-400 placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
                   onChange={(e) =>
                     setFormData({ ...formData, firstName: e.target.value })
                   }
