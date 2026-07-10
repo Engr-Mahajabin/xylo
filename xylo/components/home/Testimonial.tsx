@@ -73,7 +73,10 @@ const MarqueeRow = ({ items, direction = "left" }: MarqueeRowProps) => {
 
 export default function Testimonial() {
   return (
-    <section className="bg-[#030303] text-white py-10 px-6 md:px-20 relative overflow-hidden font-sans">
+    <section
+      id="testimonials"
+      className="bg-[#030303] text-white py-10 px-6 md:px-20 relative overflow-hidden font-sans"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center space-x-4 text-xs font-bold uppercase tracking-[0.25em] text-[#E1B816] mb-6">
           <div className="w-12 h-[1px] bg-[#E1B816]" aria-hidden="true" />

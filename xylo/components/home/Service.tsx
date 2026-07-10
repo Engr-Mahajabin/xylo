@@ -22,7 +22,10 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section className="relative w-full bg-black text-white px-6 md:px-20 py-24 md:py-32 overflow-hidden font-sans">
+    <section
+      id="services"
+      className="relative w-full bg-black text-white px-6 md:px-20 py-24 md:py-32 overflow-hidden font-sans"
+    >
       {/* Background Subtle Glow */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none transform-gpu"

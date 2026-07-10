@@ -6,39 +6,39 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqData = [
   {
     id: "01",
-    question: "What does a project at Xylo cost?",
+    question: "What services do you offer?",
     answer:
-      "Fixed price after a brief discovery call. Front-end builds and custom web platforms start around $1,500; complex software architectures are scoped individually. No hourly billing, no hidden surprises—you know the exact investment before we write a single line of code.",
+      "We design and develop business websites, custom software, SaaS products, AI-powered solutions, mobile applications, and digital branding tailored to your business goals.",
   },
   {
     id: "02",
-    question: "How long does a project take?",
+    question: "How much does a project cost?",
     answer:
-      "A standard modern frontend platform usually takes 2 to 4 weeks. Full-stack solutions or complex web applications can take 6 to 8 weeks depending on the required architecture, integrations, and testing cycles.",
+      "Every project is unique. After a short discovery call, we provide a fixed-price proposal based on your requirements, timeline, and scope—no hidden fees or hourly surprises.",
   },
   {
     id: "03",
-    question: "Which technologies do you use?",
+    question: "How long does a project take?",
     answer:
-      "We build performance-driven interfaces utilizing React.js, Next.js, and Tailwind CSS for scalable frontend architectures. For motion design and animations, we rely heavily on Framer Motion and modern UI libraries like Shadcn UI.",
+      "Project timelines depend on complexity. Most business websites take 2–4 weeks, while custom software and SaaS platforms typically take 6–12 weeks.",
   },
   {
     id: "04",
-    question: "Do you build full-stack or frontend only?",
+    question: "Can you build custom software for my business?",
     answer:
-      "While we specialize heavily in premium frontend design and interactive UI development, we also build comprehensive full-stack solutions using the MERN stack (MongoDB, Express.js, React, Node.js) paired with Next.js Server Actions.",
+      "Yes. We build custom software tailored to your workflow, including internal tools, dashboards, CRM systems, booking platforms, SaaS applications, and AI-powered solutions.",
   },
   {
     id: "05",
-    question: "Who works on the project — a team or one person?",
+    question: "Do you provide support after launch?",
     answer:
-      "You will work directly with a dedicated software engineer and designer. We avoid agency layers and miscommunications, providing direct technical consulting to ensure your platform's performance meets enterprise standards.",
+      "Absolutely. We offer post-launch support, maintenance, performance optimization, bug fixes, and future feature development to keep your product running smoothly.",
   },
   {
     id: "06",
-    question: "Do I get the source code and full access?",
+    question: "Will I own the source code and project assets?",
     answer:
-      "Absolutely. Once the project is complete and finalized, you receive 100% ownership of the repository. This includes full access to your GitHub codebase, deployment configurations (Vercel/Netlify), and all raw design assets.",
+      "Yes. Once the project is completed and payment is finalized, you'll receive full ownership of the source code, deployment, documentation, and all project assets.",
   },
 ];
 
@@ -46,7 +46,10 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#030303] text-white py-32 px-6 select-none overflow-hidden">
+    <section
+      id="faq"
+      className="bg-[#030303] text-white py-32 px-6 select-none overflow-hidden"
+    >
       <div className="max-w-5xl mx-auto">
         {/* top subtitle */}
         <div className="flex items-center gap-3 mb-4">

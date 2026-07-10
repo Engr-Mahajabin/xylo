@@ -1,5 +1,5 @@
 import { ComponentType } from "react";
-import { Globe, Sparkles, Code, Smartphone } from "lucide-react";
+import { Globe, Sparkles, Code, Brain } from "lucide-react";
 
 export interface ServiceItem {
   id: string;
@@ -14,20 +14,20 @@ export const servicesData: ServiceItem[] = [
     id: "01",
     title: "Websites",
     description:
-      "High-performance marketing sites, landing pages and corporate websites — built for conversion and speed.",
+      "Modern, high-performance websites built for speed, SEO, and conversions—from business websites to enterprise platforms.",
     icon: Globe,
     tags: [
+      "Business Websites",
       "Next.js & React",
-      "Headless CMS",
-      "SEO & Performance",
-      "A/B Testing",
+      "SEO Optimized",
+      "Performance",
     ],
   },
   {
     id: "02",
     title: "Branding",
     description:
-      "Brand identities from logo to design system — identities that stick and stay consistent across every touchpoint.",
+      "Build a memorable brand identity with professional logos, visual systems, and consistent design across every customer touchpoint.",
     icon: Sparkles,
     tags: [
       "Logo & Wordmark",
@@ -40,26 +40,26 @@ export const servicesData: ServiceItem[] = [
     id: "03",
     title: "Software",
     description:
-      "Custom tools, internal platforms and SaaS products. From MVP to scalable enterprise solution.",
+      "Custom software, web applications, dashboards, and SaaS platforms designed to streamline operations and scale with your business.",
     icon: Code,
     tags: [
-      "Web Apps & Dashboards",
-      "API & Backend",
+      "Custom Software",
+      "Web Applications",
       "SaaS Platforms",
-      "Internal Tools",
+      "API Integration",
     ],
   },
   {
     id: "04",
-    title: "Mobile Apps",
+    title: "AI Solutions",
     description:
-      "Native and cross-platform apps with first-class user experience — iOS, Android and everything in between.",
-    icon: Smartphone,
+      "Integrate AI into your business with intelligent automation, custom AI tools, chatbots, and machine learning solutions that improve efficiency and user experience.",
+    icon: Brain,
     tags: [
-      "iOS & Android",
-      "React Native",
-      "App Store Launch",
-      "Push & Analytics",
+      "AI Automation",
+      "Custom AI Tools",
+      "Chatbots & Assistants",
+      "ML Integration",
     ],
   },
 ];

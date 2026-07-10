@@ -17,13 +17,13 @@ export default function Navbar() {
   const navLinks = [
     { name: "Services", href: "#services" },
     { name: "Works", href: "#works" },
-    { name: "Blogs", href: "#blogs" },
+    { name: "Faq", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
     <header className="absolute top-6 left-0 w-full z-50 bg-transparent px-4 sm:px-6">
-      <div className="max-w-3xl mx-auto border border-white/10 bg-black/20 backdrop-blur-xl rounded-xl h-20 px-6 flex items-center justify-between shadow-2xl relative">
+      <div className="max-w-2xl mx-auto border border-white/10 bg-black/20 backdrop-blur-xl rounded-xl h-20 px-6 flex items-center justify-between shadow-2xl relative">
         <div className="flex items-center cursor-pointer group">
           <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-105">
             <Image

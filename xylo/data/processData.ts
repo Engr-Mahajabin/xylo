@@ -13,8 +13,8 @@ export const processData: ProcessStep[] = [
     total: "04",
     title: "Strategy",
     description:
-      "We get to know you and your brand. Goals, audience, competition. Out of that comes the roadmap everything else stands on.",
-    imageSrc: "/images/process/strategy.png", // আপনার ইমেজের পাথ দিন
+      "We start by understanding your business, goals, users, and market. From there, we define a clear strategy and roadmap for a successful digital product.",
+    imageSrc: "/images/process/strategy.png",
     tags: [
       "Briefing & Workshop",
       "Competitor Analysis",
@@ -27,7 +27,7 @@ export const processData: ProcessStep[] = [
     total: "04",
     title: "Design",
     description:
-      "Identity, interface, prototype. This is where the brand becomes visible — from logo to the last pixel of the site.",
+      "We transform ideas into intuitive user experiences through branding, wireframes, prototypes, and modern UI design that reflects your business.",
     imageSrc: "/images/process/design.png",
     tags: ["Brand Identity", "Wireframes & UX", "UI Design", "Design System"],
   },
@@ -36,13 +36,13 @@ export const processData: ProcessStep[] = [
     total: "04",
     title: "Build",
     description:
-      "Engineering on a modern stack: Next.js, React, performance-first. Clean code that scales and still runs in five years.",
+      "We develop fast, secure, and scalable websites, custom software, SaaS platforms, and AI-powered solutions using modern technologies and best practices.",
     imageSrc: "/images/process/build.png",
     tags: [
-      "Frontend & CMS",
-      "Backend / API",
-      "Performance & SEO",
-      "QA & Testing",
+      "Custom Development",
+      "Web & SaaS",
+      "AI Integration",
+      "Testing & Deployment",
     ],
   },
   {
@@ -50,8 +50,8 @@ export const processData: ProcessStep[] = [
     total: "04",
     title: "Launch & Care",
     description:
-      "Deployment, monitoring, continuous optimization. We stay on it — your brand grows, and we grow with it.",
-    imageSrc: "/images/process/rocket.png",
+      "After launch, we continue to support your product with monitoring, maintenance, updates, and ongoing improvements to help your business grow.",
+    imageSrc: "/images/process/launch.png",
     tags: [
       "Go-Live",
       "Analytics",

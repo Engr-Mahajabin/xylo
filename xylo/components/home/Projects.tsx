@@ -26,7 +26,7 @@ const projectsData = [
 
 export default function Projects() {
   return (
-    <section className="bg-black text-white py-24 md:py-32 px-6 md:px-20 font-sans relative overflow-hidden">
+    <section id="works" className="bg-black text-white py-24 md:py-32 px-6 md:px-20 font-sans relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* ─── হেডার ট্যাগলাইন ও টাইটেল (আপনার অন্য সেকশনের মতো এক লাইনে) ─── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 md:mb-28">

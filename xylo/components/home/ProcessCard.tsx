@@ -24,7 +24,7 @@ export default function ProcessCard({
     offset: ["start end", "start start"],
   });
 
-  // ওপরের দিকে স্ট্যাক হওয়ার সময় হালকা স্কেল ডাউন হওয়া (যেমন ১ থেকে ০.৯৫)
+  // ওপরের দিকে স্ট্যাক হওয়ার সময় হালকা স্কেল ডাউন হওয়া (যেমন ১ থেকে ০.৯৫)
   const scale = useTransform(
     scrollYProgress,
     [0, 1],
@@ -34,21 +34,23 @@ export default function ProcessCard({
   return (
     <div
       ref={container}
-      // `sticky top-36` এর মাধ্যমে প্রতিটি কার্ড স্ক্রিনের ওপরের নির্দিষ্ট দূরত্বে আটকে যাবে
+      // `sticky top-32` এর মাধ্যমে প্রতিটি কার্ড স্ক্রিনের ওপরের নির্দিষ্ট দূরত্বে আটকে যাবে
       className="sticky top-32 md:top-40 w-full flex justify-center pb-12 md:pb-24"
     >
       <motion.div
         style={{ scale }}
         className="w-full max-w-7xl bg-[#0d0d0d] border border-white/10 rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 min-h-[450px] shadow-[0_-20px_50px_rgba(0,0,0,0.8)]"
       >
-        {/* Left Side: Visual/Image Area */}
-        <div className="relative bg-[#090909] p-8 md:p-12 flex items-center justify-center border-b md:border-b-0 md:border-r border-white/5">
-          <div className="relative w-full aspect-square max-w-[320px] transition-transform duration-700 hover:scale-105">
+        {/* Left Side: Visual/Image Area (Fully Filled) */}
+        {/* h-72 md:h-full দিয়ে নিশ্চিত করা হয়েছে মোবাইল স্ক্রিনেও যেন ইমেজটি নির্দিষ্ট উচ্চতা পায় */}
+        <div className="relative w-full h-72 md:h-full overflow-hidden border-b md:border-b-0 md:border-r border-white/5 group">
+          <div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105">
             <Image
               src={step.imageSrc}
               alt={step.title}
               fill
-              className="object-contain opacity-80"
+              // object-cover ব্যবহারের ফলে ইমেজটি পুরো ডিভ জুড়ে ক্রপ হয়ে ফিট হবে
+              className="object-cover opacity-80"
               priority={index === 0}
             />
           </div>

@@ -34,7 +34,9 @@ export default function Hero() {
           >
             <div className="w-12 h-[1px] bg-[#E1B816]" />
             <span>[01]</span>
-            <span className="text-white/60">Next-Gen Intelligent Systems</span>
+            <span className="text-white/60">
+              SOFTWARE • SAAS • AI SOLUTIONS
+            </span>
           </motion.div>
 
           {/* Core Heading */}
@@ -44,11 +46,14 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-white font-sans max-w-3xl"
           >
-            We architect{" "}
-            <span className="text-[#E1B816] font-blackops block sm:inline">
+            We Build{" "}
+            <span className="text-[#E1B816] font-blackops font-light">
               Intelligent Software
             </span>{" "}
-            and Neural SaaS ecosystems.
+            and{" "}
+            <span className="text-[#E1B816] font-blackops font-light">
+              AI-Powered SaaS Products.
+            </span>
           </motion.h1>
 
           {/* Description */}
@@ -58,9 +63,9 @@ export default function Hero() {
             transition={{ delay: 0.4 }}
             className="text-zinc-400 text-lg md:text-xl max-w-2xl font-sans leading-relaxed mx-auto"
           >
-            Engineering hyper-scalable SaaS products, custom AI/ML integrations,
-            proprietary automation tools, and ultra-performance web
-            architectures for the modern web.
+            We create high-performance websites, intelligent software, scalable
+            SaaS platforms, and AI-powered solutions tailored to your business
+            goals.
           </motion.p>
 
           <motion.div

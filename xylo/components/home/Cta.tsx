@@ -22,7 +22,10 @@ export default function Cta() {
   };
 
   return (
-    <section className="bg-black text-white py-10 px-6 font-sans relative overflow-hidden">
+    <section
+      id="contact"
+      className="bg-black text-white py-10 px-6 font-sans relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
         {/* Left Side */}
         <div className="lg:col-span-5 flex flex-col justify-start gap-16 lg:gap-24">
@@ -44,10 +47,8 @@ export default function Cta() {
 
             {/* Description */}
             <p className="text-zinc-400 text-sm md:text-base max-w-md leading-relaxed font-light">
-              Direct line to us — no account manager and no briefing phone-tag
-              between departments. Tell us about your next project for ambitious
-              digital products, and we'll reply within 24 hours with concrete
-              next steps.
+              Tell us about your next project for Ambitious Digital Products,
+              and we'll reply within 24 hours with concrete next steps.
             </p>
           </div>
 
