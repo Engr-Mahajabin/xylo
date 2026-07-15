@@ -15,7 +15,7 @@ export default function Process() {
         </div>
 
         {/* Main Heading */}
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white max-w-2xl leading-tight mb-20">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-2xl leading-tight mb-20">
           From{" "}
           <span className="text-[#E1B816] font-blackops font-light">
             Briefing

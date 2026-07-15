@@ -24,7 +24,7 @@ export default function Cta() {
   return (
     <section
       id="contact"
-      className="bg-black text-white py-10 px-6 font-sans relative overflow-hidden"
+      className="bg-black text-white py-24 md:py-32 px-6 md:px-20 font-sans relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
         {/* Left Side */}
@@ -38,7 +38,7 @@ export default function Cta() {
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-5xl md:text-6xl font-normal tracking-tight mb-8 leading-none">
+            <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-8 leading-none">
               Let's{" "}
               <span className="text-[#E1B816] font-blackops font-light">
                 Talk.
@@ -92,7 +92,7 @@ export default function Cta() {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E1B816]">
               Briefing
             </span>
-            <h3 className="text-2xl md:text-3xl font-normal mt-1">
+            <h3 className="text-2xl md:text-3xl font-extrabold mt-1">
               Send us a{" "}
               <span className="text-[#E1B816] font-blackops font-light">
                 Short Briefing.

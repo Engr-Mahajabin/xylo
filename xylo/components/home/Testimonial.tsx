@@ -84,7 +84,7 @@ export default function Testimonial() {
           <span className="text-white/40">Testimonials / What they say</span>
         </div>
 
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white max-w-xl leading-tight mb-10">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white max-w-xl leading-tight mb-10">
           Trusted by{" "}
           <span className="text-[#E1B816] font-blackops font-light">
             People,
