@@ -15,10 +15,58 @@ export default function Cta() {
     consent: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    // আপনার সাবমিট লজিক বা API কল এখানে দিন
+    setIsLoading(true);
+
+    // 🔴 তোমার Formspree থেকে পাওয়া Endpoint URL টি এখানে বসাও
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzdnebyk";
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: `${formData.firstName} ${formData.lastName}`,
+          Email: formData.email,
+          Phone: formData.phone,
+          Company: formData.companyName || "N/A",
+          Website: formData.website || "N/A",
+          Message: formData.message || "No message provided.",
+        }),
+      });
+
+      if (response.ok) {
+        alert("Request sent successfully! 🎉");
+
+        // ফর্ম রিসেট করা
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          companyName: "",
+          website: "",
+          message: "",
+          consent: false,
+        });
+
+        // ফর্ম ইনপুট ফিল্ডগুলো খালি করার জন্য জাভাস্ক্রিপ্ট ফর্ম রিসেট ট্রিগার করা
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert("Failed to send request. Please try again.");
+      }
+    } catch (error) {
+      console.error("Formspree Error:", error);
+      alert("Something went wrong, please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -248,12 +296,19 @@ export default function Cta() {
             {/* Submit Button */}
             <ActionButton
               type="submit"
+              disabled={isLoading}
               className="w-full mt-4 bg-zinc-900 border border-white/10 hover:border-[#E1B816]/40 hover:bg-zinc-800 text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group tracking-wide text-sm"
             >
-              Send request
-              <span className="group-hover:translate-x-1 transition-transform">
-                →
-              </span>
+              {isLoading ? (
+                <span>Sending Request...</span>
+              ) : (
+                <>
+                  Send request
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </>
+              )}
             </ActionButton>
           </form>
         </div>

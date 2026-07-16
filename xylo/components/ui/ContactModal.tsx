@@ -21,10 +21,43 @@ export default function ContactModal({ onClose }: ContactModalProps) {
     consent: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Modal Form Submitted:", formData);
-    onClose();
+    setIsLoading(true);
+
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzdnebyk";
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: `${formData.firstName} ${formData.lastName}`,
+          Email: formData.email,
+          Phone: formData.phone,
+          Company: formData.companyName || "N/A",
+          Website: formData.website || "N/A",
+          Message: formData.message || "No message provided.",
+        }),
+      });
+
+      if (response.ok) {
+        alert("Request sent successfully! 🎉");
+        onClose();
+      } else {
+        alert("Failed to send request. Please try again.");
+      }
+    } catch (error) {
+      console.error("Formspree Error:", error);
+      alert("Something went wrong, please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,15 +79,16 @@ export default function ContactModal({ onClose }: ContactModalProps) {
         transition={{ type: "spring", duration: 0.5 }}
         className="relative w-full max-w-2xl bg-[#090909] border border-white/[0.08] p-8 md:p-12 rounded-2xl max-h-[90vh] overflow-y-auto shadow-2xl z-10 scrollbar-none"
       >
-        {/* 🚀 ইমেজ অনুযায়ী ক্লোজ বাটন স্টাইল */}
+        {/* close button */}
         <button
           onClick={onClose}
+          type="button"
           className="absolute top-6 right-6 text-zinc-400 hover:text-white border border-white/10 rounded px-2.5 py-2.5 bg-transparent transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* 🚀 ইমেজ অনুযায়ী মডাল হেডার চেইঞ্জেস */}
+        {/* মডাল হেডার */}
         <div className="mb-10 text-left">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-500">
             Contact
@@ -70,7 +104,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
           </p>
         </div>
 
-        {/* ফর্ম ইনপুটস */}
+        {/* ফর্ম */}
         <form onSubmit={handleSubmit} className="space-y-6 text-left">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-2">
@@ -81,6 +115,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
                 type="text"
                 required
                 placeholder="Anna"
+                value={formData.firstName}
                 className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
                 onChange={(e) =>
                   setFormData({ ...formData, firstName: e.target.value })
@@ -95,6 +130,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
                 type="text"
                 required
                 placeholder="Smith"
+                value={formData.lastName}
                 className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
                 onChange={(e) =>
                   setFormData({ ...formData, lastName: e.target.value })
@@ -111,6 +147,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
               type="email"
               required
               placeholder="anna@company.com"
+              value={formData.email}
               className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -126,6 +163,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
               type="tel"
               required
               placeholder="+1 555 1234567"
+              value={formData.phone}
               className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
@@ -144,6 +182,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
               <input
                 type="text"
                 placeholder="Studio Inc."
+                value={formData.companyName}
                 className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
                 onChange={(e) =>
                   setFormData({ ...formData, companyName: e.target.value })
@@ -160,6 +199,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
               <input
                 type="url"
                 placeholder="https://your-domain.com"
+                value={formData.website}
                 className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors"
                 onChange={(e) =>
                   setFormData({ ...formData, website: e.target.value })
@@ -176,6 +216,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
             <textarea
               rows={4}
               placeholder="Idea, industry, timeline — what we should know."
+              value={formData.message}
               className="w-full bg-[#121212]/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[#E1B816]/50 transition-colors resize-none"
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -188,6 +229,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
               id="modal-consent"
               type="checkbox"
               required
+              checked={formData.consent}
               className="mt-1 accent-[#E1B816] h-4 w-4 rounded border-white/10 bg-[#121212]"
               onChange={(e) =>
                 setFormData({ ...formData, consent: e.target.checked })
@@ -210,12 +252,19 @@ export default function ContactModal({ onClose }: ContactModalProps) {
 
           <ActionButton
             type="submit"
-            className="w-full mt-4 bg-zinc-900 border border-white/10 hover:border-[#E1B816]/40 hover:bg-zinc-800 text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group tracking-wide text-sm cursor-pointer"
+            disabled={isLoading}
+            className="w-full mt-4 bg-zinc-900 border border-white/10 hover:border-[#E1B816]/40 hover:bg-zinc-800 text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group tracking-wide text-sm cursor-pointer disabled:opacity-55 disabled:cursor-not-allowed"
           >
-            Send request
-            <span className="group-hover:translate-x-1 transition-transform">
-              →
-            </span>
+            {isLoading ? (
+              <span>Sending Request...</span>
+            ) : (
+              <>
+                Send request
+                <span className="group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </>
+            )}
           </ActionButton>
         </form>
       </motion.div>
