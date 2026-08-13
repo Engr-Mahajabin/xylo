@@ -10,7 +10,7 @@ export const projectsData = [
       "Home to 300+ Trusted Joomla products, relied on by professionals globally.",
     image: "/project1.png",
     badge: "140+ Templates",
-    liveLink: "https://www.joomshaper.com", // আপনার প্রজেক্টের লাইভ ইউআরএল এখানে দিন
+    liveLink: "https://www.joomshaper.com",
   },
   {
     id: "02",

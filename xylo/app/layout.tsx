@@ -37,6 +37,8 @@ import { Black_Ops_One, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Providers } from "@/components/providers/Providers";
+import ClientLayoutWrapper from "@/components/providers/ClientLayoutWrapper";
 
 const blackOpsOne = Black_Ops_One({
   weight: "400",
@@ -86,9 +88,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${blackOpsOne.variable} ${inter.variable}`}>
       <body className="bg-black text-white antialiased">
-        <Navbar />
-        {children}
-        <Footer/>
+        <Providers>
+          {/* <Navbar /> */}
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+          {/* <Footer /> */}
+        </Providers>
       </body>
     </html>
   );
