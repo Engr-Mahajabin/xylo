@@ -108,26 +108,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
-import api from "@/lib/axios"; // আপনার তৈরি করা axios instance-এর সঠিক পাথ দিন
-
-// Django API থেকে আসা অবজেক্টের টাইপ
-interface BackendTestimonial {
-  id?: number | string;
-  name: string;
-  content?: string;
-  text?: string;
-  position?: string;
-  company?: string;
-  role?: string;
-}
-
-// UI-তে দেখানোর জন্য ক্লিন টাইপ
-interface TestimonialItem {
-  id?: number | string;
-  name: string;
-  role: string;
-  text: string;
-}
+import { testimonialService } from "@/features/testimonials/testimonialService";
+import { TestimonialCard } from "@/features/testimonials/TestimonialCard";
+import { TestimonialItem } from "@/features/testimonials/testimonial.types";
 
 interface MarqueeRowProps {
   items: TestimonialItem[];
@@ -156,61 +139,32 @@ const MarqueeRow = ({ items, direction = "left" }: MarqueeRowProps) => {
     startAnimation();
   }, [direction, items]);
 
-  const handleMouseEnter = () => {
-    isHovered.current = true;
-    controls.stop();
-  };
-
-  const handleMouseLeave = () => {
-    isHovered.current = false;
-    startAnimation();
-  };
-
   return (
     <div className="flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
       <motion.div
         className="flex gap-6 pr-6 shrink-0 cursor-pointer"
         animate={controls}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => {
+          isHovered.current = true;
+          controls.stop();
+        }}
+        onMouseLeave={() => {
+          isHovered.current = false;
+          startAnimation();
+        }}
       >
         {duplicatedItems.map((item, idx) => (
-          <div
+          <TestimonialCard
             key={item.id ? `${item.id}-${idx}` : idx}
-            className="w-[380px] md:w-[420px] shrink-0 p-6 rounded-2xl 
-                       bg-white/[0.02] border border-white/[0.05] backdrop-blur-md
-                       flex flex-col justify-between text-left select-none
-                       hover:border-white/[0.15] hover:bg-white/[0.04] transition-colors duration-300"
-          >
-            {/* 1. Review Content */}
-            <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
-              {item.text}
-            </p>
-
-            <div className="flex items-center gap-3">
-              {/* Avatar First Letter */}
-              <div className="w-10 h-10 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-xs font-bold text-[#E1B816]">
-                {item.name ? item.name[0].toUpperCase() : "U"}
-              </div>
-
-              <div>
-                {/* 2. Name */}
-                <h4 className="text-zinc-200 text-sm font-semibold">
-                  {item.name}
-                </h4>
-
-                {/* 3. Role / Designation */}
-                <p className="text-zinc-500 text-xs">{item.role}</p>
-              </div>
-            </div>
-          </div>
+            item={item}
+          />
         ))}
       </motion.div>
     </div>
   );
 };
 
-export default function Testimonial() {
+export default function TestimonialSection() {
   const [row1, setRow1] = useState<TestimonialItem[]>([]);
   const [row2, setRow2] = useState<TestimonialItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -218,34 +172,11 @@ export default function Testimonial() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        // Django Backend API Call
-        const response = await api.get("/api/testimonials/");
-        const rawData: BackendTestimonial[] = response.data;
-
-        if (Array.isArray(rawData) && rawData.length > 0) {
-          // Django ফিল্ডগুলোকে আপনার UI-এর সাথে সামঞ্জস্যপূর্ণ ফরম্যাটে কনভার্ট করা
-          const formattedData: TestimonialItem[] = rawData.map((item) => {
-            // Position এবং Company যুক্ত করে Role তৈরি
-            let userRole = item.role || "";
-            if (item.position || item.company) {
-              userRole =
-                item.position && item.company
-                  ? `${item.position} @ ${item.company}`
-                  : item.position || item.company || "";
-            }
-
-            return {
-              id: item.id,
-              name: item.name || "Anonymous",
-              role: userRole || "Client",
-              text: item.content || item.text || "", // Django-র Content ফিল্ড
-            };
-          });
-
-          // ডাটা অর্ধেক অর্ধেক করে দুই সারিতে ভাগ করা
-          const half = Math.ceil(formattedData.length / 2);
-          setRow1(formattedData.slice(0, half));
-          setRow2(formattedData.slice(half));
+        const data = await testimonialService.getTestimonials();
+        if (data.length > 0) {
+          const half = Math.ceil(data.length / 2);
+          setRow1(data.slice(0, half));
+          setRow2(data.slice(half));
         }
       } catch (error) {
         console.error("Error fetching testimonials:", error);
